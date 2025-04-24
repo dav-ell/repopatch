@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Patch Preview & Apply</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.1.0/diff.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="project-source">
+            <small>Step 1: Connect to or Upload your project source</small>
+            <div class="connection-controls">
+                <div class="endpoint-input">
+                    <label for="endpoint-url">Endpoint URL:</label>
+                    <input type="text" id="endpoint-url" placeholder="http://localhost:3000">
+                    <button id="connect-endpoint">Connect</button>
+                    <span id="connection-status"></span>
+                </div>
+                <div class="directory-actions">
+                    <button id="add-path-btn" title="Add an absolute path from the server">Add Server Path</button>
+                    <button id="upload-btn" title="Upload project as a ZIP file">Upload ZIP</button>
+                    <input type="file" id="zip-upload" accept=".zip" style="display:none;">
+                    <button id="upload-folder-btn" title="Upload project from a local folder">Upload Folder</button>
+                    <input type="file" id="folder-upload" webkitdirectory directory multiple style="display:none;">
+                </div>
+            </div>
+            <div class="directories-section">
+                <h3>Project Sources</h3>
+                 <small>Select the source to apply the patch against.</small>
+                <div class="directories-list-wrapper">
+                    <div id="directories-list"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="patch-input-area">
+            <h2>Patch Input</h2>
+            <small>Step 2: Paste your patch content (unified diff format)</small>
+            <textarea id="patch-input" placeholder="Paste patch content here..." rows="15"></textarea>
+        </div>
+
+        <div class="patch-preview-area">
+             <div class="preview-header">
+                 <h2>Patch Preview</h2>
+                 <span id="preview-status"></span>
+             </div>
+            <small>Step 3: Review changes (lines starting with '+' will be added, '-' removed)</small>
+            <pre id="patch-preview"></pre>
+            <div id="failed-files"></div>
+            <button id="apply-patch-btn" disabled>Apply Patch to Selected Source</button>
+            <span id="apply-status"></span>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
