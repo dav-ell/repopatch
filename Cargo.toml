@@ -25,10 +25,11 @@ rustls-pemfile = "2.2.0"
 actix-rt = "2.10.0"
 tokio-stream = "0.1.17"
 patch = "0.7.0"
+diff-match-patch-rs = "0.4.1"
 
-[profile.release]
-opt-level = 3
-lto = true
-strip = true
-codegen-units = 1
-panic = "abort"
+#[profile.release]
+#opt-level = 3
+#lto = true
+#strip = true
+#codegen-units = 1
+#panic = "abort"
